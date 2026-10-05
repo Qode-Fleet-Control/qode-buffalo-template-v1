@@ -1,4 +1,4 @@
-module github.com/Qode-Platform/qode-buffalo-template-v1
+module github.com/Qode-Fleet-Control/qode-buffalo-template-v1
 
 go 1.25.0
 
