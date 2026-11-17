@@ -23,6 +23,9 @@ func newApp() *buffalo.App {
 		Env:  "production",
 		Addr: ":" + port(),
 	})
+	// KEEP THIS: one log line per request (status + duration) is what the workspace Monitoring tab charts.
+	// requestLog (requestlog.go) takes the place of Buffalo's text request logger.
+	app.Middleware.Replace(buffalo.RequestLogger, requestLog)
 
 	app.GET("/health", func(c buffalo.Context) error {
 		return c.Render(http.StatusOK, buffaloJSON(map[string]string{"status": "ok"}))
